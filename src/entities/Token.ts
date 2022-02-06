@@ -68,5 +68,26 @@ export const WETH: { [key: number]: Token } = {
     18,
     'Wrapped Ether',
     'WETH'
+  ),
+  [ChainId.FANTOM_TESTNET]: new Token(
+    '0xC481263897F96B4781219EDF5cfAa95ec49c200c',
+    ChainId.FANTOM_TESTNET,
+    18,
+    'Wrapped Fantom',
+    'WFTM'
+  ),
+  [ChainId.AVALANCHE_TESTNET]: new Token(
+    '0xC481263897F96B4781219EDF5cfAa95ec49c200c',
+    ChainId.AVALANCHE_TESTNET,
+    18,
+    'Wrapped Avalanche Coin',
+    'WAVAX'
+  ),
+  [ChainId.MATIC_TESTNET]: new Token(
+    '0xC481263897F96B4781219EDF5cfAa95ec49c200c',
+    ChainId.MATIC_TESTNET,
+    18,
+    'Wrapped Matic',
+    'WMATIC'
   )
 };

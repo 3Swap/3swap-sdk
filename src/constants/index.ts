@@ -8,6 +8,8 @@ export enum ChainId {
   AVALANCHE_TESTNET = 43113
 }
 
+export type BigIntishThingy = JSBI | bigint | string;
+
 export const Factories: { [key: number]: string } = {
   [ChainId.BINANCE_TESTNET]: '0xFb0C3dbC457DC5C34145b8d202687b97E888DcDc',
   [ChainId.ROPSTEN]: '0xF6a7F229447FB986195c4dC8305553C8A8518d06',

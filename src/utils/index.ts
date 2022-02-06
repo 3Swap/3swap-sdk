@@ -13,4 +13,13 @@ export const validateAndParseAddress = (address: string) => {
   }
 };
 
-export const sqrt = (num: number) => {};
+export const sqrt = (num: number) => {
+  let x = num;
+  let y = 1;
+
+  while (x - y > 0) {
+    x = (x + y) / 2;
+    y = num / x;
+  }
+  return x;
+};
