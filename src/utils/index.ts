@@ -12,3 +12,5 @@ export const validateAndParseAddress = (address: string) => {
     invariant(false, error.message);
   }
 };
+
+export const sqrt = (num: number) => {};
