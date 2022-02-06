@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write **/**/*.{ts,js,json}"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/3Swap/3swap-sdk/issues"
   },
-  "homepage": "https://github.com/3Swap/3swap-sdk#readme"
+  "homepage": "https://github.com/3Swap/3swap-sdk#readme",
+  "dependencies": {
+    "tiny-invariant": "^1.2.0"
+  }
 }
