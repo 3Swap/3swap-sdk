@@ -32,14 +32,14 @@ export class Fetcher {
           ? JSBI.toNumber(JSBI.BigInt(decimals.replace('0x', '')))
           : decimals;
 
-      let name: any = await fetchRpc(providerUrl || URLS[chainId], {
+      const name: any = await fetchRpc(providerUrl || URLS[chainId], {
         method: 'eth_call',
         jsonrpc: '2.0',
         id: 1,
         params: [{ from: '0x', to: address, data: nameEncoded }]
       });
 
-      let symbol: any = await fetchRpc(providerUrl || URLS[chainId], {
+      const symbol: any = await fetchRpc(providerUrl || URLS[chainId], {
         method: 'eth_call',
         jsonrpc: '2.0',
         id: 1,
