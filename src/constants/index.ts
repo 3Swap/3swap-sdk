@@ -35,3 +35,15 @@ export const TEN = JSBI.BigInt(10);
 export const _100 = JSBI.BigInt(100);
 export const FEES_NUMERATOR = JSBI.BigInt(997);
 export const FEES_DENOMINATOR = JSBI.BigInt(1000);
+
+export const URLS: { [key: number]: string } = {
+  [ChainId.BINANCE_TESTNET]:
+    'https://speedy-nodes-nyc.moralis.io/558120230227a848a2bb7043/bsc/testnet',
+  [ChainId.ROPSTEN]:
+    'https://speedy-nodes-nyc.moralis.io/558120230227a848a2bb7043/eth/ropsten',
+  [ChainId.MATIC_TESTNET]:
+    'https://speedy-nodes-nyc.moralis.io/558120230227a848a2bb7043/polygon/mumbai',
+  [ChainId.AVALANCHE_TESTNET]:
+    'https://speedy-nodes-nyc.moralis.io/558120230227a848a2bb7043/avalanche/testnet',
+  [ChainId.FANTOM_TESTNET]: 'https://rpc.testnet.fantom.network'
+};
