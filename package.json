@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/3Swap/3swap-sdk#readme",
   "dependencies": {
-    "tiny-invariant": "^1.2.0"
+    "@ethersproject/address": "^5.5.0",
+    "jsbi": "^4.1.0",
+    "tiny-invariant": "^1.2.0",
+    "tiny-warning": "^1.0.3"
   }
 }

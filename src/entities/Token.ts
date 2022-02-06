@@ -8,7 +8,13 @@ export class Token {
   public _name: string;
   public _symbol: string;
 
-  constructor(address: string, chainId: ChainId, decimals: number | string, name: string, symbol: string) {
+  constructor(
+    address: string,
+    chainId: ChainId,
+    decimals: number | string,
+    name: string,
+    symbol: string
+  ) {
     this._address = address;
     this._chainId = chainId;
     this._decimals = decimals;
