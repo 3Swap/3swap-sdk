@@ -26,6 +26,16 @@ export class TokenAmount {
     return new TokenAmount(sum, this.token);
   }
 
+  subtract(other: TokenAmount): TokenAmount {
+    invariant(
+      this.token._chainId === other.token._chainId,
+      'operation_on_different_chains'
+    );
+    invariant(this.token._address === other.token._address, 'must_be_same_token');
+    const diff = JSBI.add(this.raw, other.raw);
+    return new TokenAmount(diff, this.token);
+  }
+
   divideByDecimal(): number {
     return JSBI.toNumber(
       JSBI.divide(
