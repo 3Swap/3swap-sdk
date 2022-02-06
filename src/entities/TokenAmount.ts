@@ -32,7 +32,7 @@ export class TokenAmount {
       'operation_on_different_chains'
     );
     invariant(this.token._address === other.token._address, 'must_be_same_token');
-    const diff = JSBI.add(this.raw, other.raw);
+    const diff = JSBI.subtract(this.raw, other.raw);
     return new TokenAmount(diff, this.token);
   }
 
