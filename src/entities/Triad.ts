@@ -34,8 +34,8 @@ export class Triad {
       ),
       tokenAmounts[0].token.chainId(),
       18,
-      '3Swap LPs',
-      'SAP-LP'
+      '3Swap Triad',
+      '3Swap V1'
     );
     this.tokenAmounts = tokenAmounts as [TokenAmount, TokenAmount, TokenAmount];
   }
