@@ -18,7 +18,7 @@ class HttpRequestError extends Error {
   }
 }
 
-export const fetchRpc = (url: string, params: JsonRpcParams) => {
+export const fetchRpc = (url: string, params: JsonRpcParams): Promise<any> => {
   try {
     return new Promise((resolve, reject) => {
       axios
