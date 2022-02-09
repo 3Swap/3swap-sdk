@@ -4,6 +4,9 @@ import { BigIntishThingy } from '../constants';
 import { numberToHex } from '../utils';
 import { Token } from './Token';
 
+/**
+ * Holds information about token quantity
+ */
 export class TokenAmount {
   public numerator: BigIntishThingy;
   public token: Token;
@@ -11,6 +14,11 @@ export class TokenAmount {
     return this.numerator as JSBI;
   }
 
+  /**
+   * 
+   * @param amount 
+   * @param token 
+   */
   constructor(amount: BigIntishThingy, token: Token) {
     this.numerator = amount;
     this.token = token;

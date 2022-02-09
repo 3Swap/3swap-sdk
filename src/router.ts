@@ -10,6 +10,9 @@ export enum TradeType {
   EXACT_OUTPUT
 }
 
+/**
+ * Holds the necessary objects to construct a trade
+ */
 export class Trade {
   public inputAmount1: TokenAmount;
   public inputAmount2: TokenAmount;

@@ -9,7 +9,18 @@ import { fetchRpc } from './utils';
 import { Triad } from './entities/Triad';
 import { TokenAmount } from './entities/TokenAmount';
 
+/**
+ * The fetcher class contains utility functions for retrieving on-chain data
+ * @author Kingsley Victor
+ */
 export class Fetcher {
+  /**
+   * Fetch token information from chain using address and chain ID.
+   * @param chainId ID of the chain.
+   * @param address Token address.
+   * @param providerUrl Optional provider url. If this is not provided, a custom url would be used depending on the provided chain ID.
+   * @returns {Promise<Token>}
+   */
   public static async fetchTokenData(
     chainId: ChainId,
     address: string,
@@ -72,6 +83,14 @@ export class Fetcher {
     }
   }
 
+  /**
+   * Fetch a triad using three tokens
+   * @param tokenA First token.
+   * @param tokenB Second token.
+   * @param tokenC Third token.
+   * @param providerUrl Optional provider url.
+   * @returns
+   */
   static async fetchTriadData(
     tokenA: Token,
     tokenB: Token,
@@ -96,17 +115,10 @@ export class Fetcher {
         })
       );
 
-      if (typeof reserve0 === 'string') {
-        reserve0 = JSBI.BigInt(reserve0);
-      }
+      reserve0 = JSBI.BigInt(reserve0);
+      reserve1 = JSBI.BigInt(reserve1);
+      reserve2 = JSBI.BigInt(reserve2);
 
-      if (typeof reserve1 === 'string') {
-        reserve1 = JSBI.BigInt(reserve1);
-      }
-
-      if (typeof reserve2 === 'string') {
-        reserve2 = JSBI.BigInt(reserve2);
-      }
       let balances = tokenA.sortsBefore(tokenB)
         ? [reserve0, reserve1, reserve2]
         : [reserve1, reserve0, reserve2];

@@ -27,7 +27,6 @@ describe('All', () => {
     );
 
     const triad = await Fetcher.fetchTriadData(sapx, busd, WETH[ChainId.BINANCE_TESTNET]);
-    console.log(triad.token0);
     expect(triad.liquidityToken.address().toLowerCase()).toEqual(
       '0x64b15069883901ca7dD28d1DBf400E531a50B744'.toLowerCase()
     );
