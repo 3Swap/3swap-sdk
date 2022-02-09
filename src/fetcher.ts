@@ -26,27 +26,45 @@ export class Fetcher {
         method: 'eth_call',
         jsonrpc: '2.0',
         id: 1,
-        params: [{ to: address, data: decimalEncoded }]
+        params: [{ to: address, data: decimalEncoded }, 'latest']
       });
 
       decimals =
-        typeof decimals === 'string'
-          ? JSBI.toNumber(JSBI.BigInt(decimals.replace('0x', '')))
-          : decimals;
+        typeof decimals === 'string' ? JSBI.toNumber(JSBI.BigInt(decimals)) : decimals;
 
-      const name: any = await fetchRpc(providerUrl || URLS[chainId], {
+      let name: any = await fetchRpc(providerUrl || URLS[chainId], {
         method: 'eth_call',
         jsonrpc: '2.0',
         id: 1,
-        params: [{ to: address, data: nameEncoded }]
+        params: [{ to: address, data: nameEncoded }, 'latest']
       });
 
-      const symbol: any = await fetchRpc(providerUrl || URLS[chainId], {
+      name = name.replace('0x', '');
+
+      let nameUpdated: string = '';
+
+      for (let i = 0; i < name.length; i += 2) {
+        nameUpdated += String.fromCharCode(parseInt(name.toString().substr(i, 2), 16));
+      }
+
+      name = nameUpdated;
+
+      let symbol: any = await fetchRpc(providerUrl || URLS[chainId], {
         method: 'eth_call',
         jsonrpc: '2.0',
         id: 1,
-        params: [{ to: address, data: symbolEncoded }]
+        params: [{ to: address, data: symbolEncoded }, 'latest']
       });
+
+      symbol = symbol.replace('0x', '');
+
+      let symbolUpdated: string = '';
+
+      for (let i = 0; i < symbol.length; i += 2) {
+        symbolUpdated += String.fromCharCode(parseInt(symbol.substr(i, 2), 16));
+      }
+
+      symbol = symbolUpdated.trim();
 
       return Promise.resolve(new Token(address, chainId, decimals, name, symbol));
     } catch (error: any) {
@@ -68,26 +86,26 @@ export class Fetcher {
       const address = Triad.getAddress(tokenA, tokenB, tokenC, tokenA.chainId());
       const abiInterface = new Interface(I3SwapTriad.abi);
       const getReservesEncoded = abiInterface.getSighash('getReserves');
-      let [reserve0, reserve1, reserve2] = await fetchRpc(
-        providerUrl || URLS[tokenA._chainId],
-        {
+      let [reserve0, reserve1, reserve2] = abiInterface.decodeFunctionResult(
+        'getReserves',
+        await fetchRpc(providerUrl || URLS[tokenA._chainId], {
           method: 'eth_call',
           jsonrpc: '2.0',
           id: 1,
-          params: [{ to: address, data: getReservesEncoded }]
-        }
+          params: [{ to: address, data: getReservesEncoded }, 'latest']
+        })
       );
 
       if (typeof reserve0 === 'string') {
-        reserve0 = JSBI.BigInt(reserve0.replace('0x', ''));
+        reserve0 = JSBI.BigInt(reserve0);
       }
 
       if (typeof reserve1 === 'string') {
-        reserve1 = JSBI.BigInt(reserve1.replace('0x', ''));
+        reserve1 = JSBI.BigInt(reserve1);
       }
 
       if (typeof reserve2 === 'string') {
-        reserve2 = JSBI.BigInt(reserve2.replace('0x', ''));
+        reserve2 = JSBI.BigInt(reserve2);
       }
       let balances = tokenA.sortsBefore(tokenB)
         ? [reserve0, reserve1, reserve2]

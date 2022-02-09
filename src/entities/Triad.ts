@@ -101,4 +101,28 @@ export class Triad {
   public get token2(): Token {
     return this.tokenAmounts[2].token;
   }
+
+  public get balance0(): BigIntishThingy {
+    return this.tokenAmounts[0].raw;
+  }
+
+  public get balance1(): BigIntishThingy {
+    return this.tokenAmounts[1].raw;
+  }
+
+  public get balance2(): BigIntishThingy {
+    return this.tokenAmounts[2].raw;
+  }
+
+  public get balance0DividedByDecimal(): number {
+    return this.tokenAmounts[0].divideByDecimal();
+  }
+
+  public get balance1DividedByDecimal(): number {
+    return this.tokenAmounts[1].divideByDecimal();
+  }
+
+  public get balance2DividedByDecimal(): number {
+    return this.tokenAmounts[2].divideByDecimal();
+  }
 }

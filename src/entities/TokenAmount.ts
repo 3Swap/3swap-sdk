@@ -38,15 +38,13 @@ export class TokenAmount {
 
   divideByDecimal(): number {
     return JSBI.toNumber(
-      JSBI.divide(
-        this.numerator as JSBI,
-        JSBI.BigInt(10 ** (this.token._decimals as number))
-      )
+      JSBI.divide(this.raw, JSBI.BigInt(10 ** (this.token._decimals as number)))
     );
   }
 
   hexifyFromBigIntishThingy(): string {
-    return `0x${(this.numerator as JSBI).toString(16)}`;
+    const asString = (this.numerator as JSBI).toString(16);
+    return !asString.startsWith('0x') ? `0x${asString}` : asString;
   }
 
   hexifyFromDivided(): string {

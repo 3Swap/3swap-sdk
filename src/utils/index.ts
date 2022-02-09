@@ -29,7 +29,11 @@ export const fetchRpc = (url: string, params: JsonRpcParams): Promise<any> => {
               new HttpRequestError(res.status, `${url} responded with ${res.status}`)
             );
           }
-          resolve(res.data);
+
+          if (res.data.error) {
+            reject(new HttpRequestError(500, res.data.error.message || res.data.error));
+          }
+          resolve(res.data.result);
         })
         .catch(reject);
     });
