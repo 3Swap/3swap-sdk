@@ -7,8 +7,8 @@ describe('All', () => {
       '0x57c84e7bcbab211761a0cb91484ae896aa897ae9'
     );
     expect(sapx.decimals()).toEqual(18);
-    expect(sapx.symbol()).toContain('SAPX');
-    expect(sapx.name()).toContain('3Swap 0x');
+    expect(sapx.symbol()).toEqual('SAPX');
+    expect(sapx.name()).toEqual('3Swap 0x');
   });
 
   test('square root function works', () => {

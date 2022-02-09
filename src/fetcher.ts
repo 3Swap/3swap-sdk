@@ -43,39 +43,25 @@ export class Fetcher {
       decimals =
         typeof decimals === 'string' ? JSBI.toNumber(JSBI.BigInt(decimals)) : decimals;
 
-      let name: any = await fetchRpc(providerUrl || URLS[chainId], {
-        method: 'eth_call',
-        jsonrpc: '2.0',
-        id: 1,
-        params: [{ to: address, data: nameEncoded }, 'latest']
-      });
+      const name: any = abiInterface.decodeFunctionResult(
+        'name',
+        await fetchRpc(providerUrl || URLS[chainId], {
+          method: 'eth_call',
+          jsonrpc: '2.0',
+          id: 1,
+          params: [{ to: address, data: nameEncoded }, 'latest']
+        })
+      )[0];
 
-      name = name.replace('0x', '');
-
-      let nameUpdated: string = '';
-
-      for (let i = 0; i < name.length; i += 2) {
-        nameUpdated += String.fromCharCode(parseInt(name.toString().substr(i, 2), 16));
-      }
-
-      name = nameUpdated;
-
-      let symbol: any = await fetchRpc(providerUrl || URLS[chainId], {
-        method: 'eth_call',
-        jsonrpc: '2.0',
-        id: 1,
-        params: [{ to: address, data: symbolEncoded }, 'latest']
-      });
-
-      symbol = symbol.replace('0x', '');
-
-      let symbolUpdated: string = '';
-
-      for (let i = 0; i < symbol.length; i += 2) {
-        symbolUpdated += String.fromCharCode(parseInt(symbol.substr(i, 2), 16));
-      }
-
-      symbol = symbolUpdated.trim();
+      const symbol: any = abiInterface.decodeFunctionResult(
+        'symbol',
+        await fetchRpc(providerUrl || URLS[chainId], {
+          method: 'eth_call',
+          jsonrpc: '2.0',
+          id: 1,
+          params: [{ to: address, data: symbolEncoded }, 'latest']
+        })
+      )[0];
 
       return Promise.resolve(new Token(address, chainId, decimals, name, symbol));
     } catch (error: any) {

@@ -10,10 +10,19 @@ let triadAddressCache: {
   };
 } = {};
 
+/**
+ * Represents a triad.
+ */
 export class Triad {
   public readonly liquidityToken: Token;
   public readonly tokenAmounts: [TokenAmount, TokenAmount, TokenAmount];
 
+  /**
+   *
+   * @param tokenAmount0
+   * @param tokenAmount1
+   * @param tokenAmount2
+   */
   public constructor(
     tokenAmount0: TokenAmount,
     tokenAmount1: TokenAmount,

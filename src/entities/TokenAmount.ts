@@ -15,9 +15,9 @@ export class TokenAmount {
   }
 
   /**
-   * 
-   * @param amount 
-   * @param token 
+   *
+   * @param amount Actual amount (BigNumber or JSBI).
+   * @param token The token (see {@link Token}).
    */
   constructor(amount: BigIntishThingy, token: Token) {
     this.numerator = amount;

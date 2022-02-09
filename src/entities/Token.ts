@@ -1,6 +1,10 @@
 import invariant from 'tiny-invariant';
 import { ChainId } from '../constants';
 
+/**
+ * Token representation
+ * @author Kingsley Victor
+ */
 export class Token {
   public _address: string;
   public _chainId: ChainId;
@@ -8,6 +12,14 @@ export class Token {
   public _name: string;
   public _symbol: string;
 
+  /**
+   *
+   * @param address Token address.
+   * @param chainId Chain ID.
+   * @param decimals Token's decimals.
+   * @param name Token's name.
+   * @param symbol Token's symbol.
+   */
   constructor(
     address: string,
     chainId: ChainId,
@@ -54,6 +66,9 @@ export class Token {
   }
 }
 
+/**
+ * Wrapped Ether.
+ */
 export const WETH: { [key: number]: Token } = {
   [ChainId.BINANCE_TESTNET]: new Token(
     '0xEB23ab7CFf701BB4180C519BCD5FB85d6C30cD94',

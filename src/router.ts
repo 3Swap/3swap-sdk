@@ -77,6 +77,9 @@ export class Trade {
   }
 }
 
+/**
+ * Trade options.
+ */
 export interface TradeOptions {
   /**
    * Price difference during latency in transaction submission and block confirmation
