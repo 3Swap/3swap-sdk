@@ -79,7 +79,7 @@ const triad = await Fetcher.fetchTriadData(tokenA, tokenB, tokenC, 'PROVIDER_URL
 Fields in the triad class include:
 
 
-|Name          | Type        |
-|--------------|-------------|
-|liquidityToken|Token        |
-|tokenAmounts  |[TokenAmount]|
+|Name          | Type                                  |
+|--------------|---------------------------------------|
+|liquidityToken|Token                                  |
+|tokenAmounts  |[TokenAmount, TokenAmount, TokenAmount]|
