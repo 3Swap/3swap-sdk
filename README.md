@@ -83,3 +83,33 @@ Fields in the triad class include:
 |--------------|---------------------------------------|
 |liquidityToken|Token                                  |
 |tokenAmounts  |[TokenAmount, TokenAmount, TokenAmount]|
+
+
+
+**Computing trades:**
+
+The SDK also provides the effective computation of trades through the `Router` class.
+
+
+```js
+import { Router } from '3swap-sdk';
+
+Router.swapCallParameter(trade, chainId, options);
+```
+
+The static `swapCallParameter` method of the `Router` class takes in a trade, a chain ID and a trade options object and then computes a `SwapParams` object which contains the method name, the arguments for the method and the hex encoded value of Ether to be sent in the transaction (this is 0 for transactions that do not involve Ether).
+
+
+**Constructing a `Trade`**
+
+A trade class is useful in the actual computation by the router class. The `Trade` constructor takes in three `TokenAmount` objects and a `TradeType` enum.
+
+```js
+new Trade(input1amount, input2amount, outputamount, tradetype);
+```
+
+The `TokenAmount` constructor takes in a big number (the amount) and a token.
+
+```js
+new TokenAmount(JSBI.BigInt(4), token);
+```
