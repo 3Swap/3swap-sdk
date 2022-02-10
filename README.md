@@ -125,3 +125,27 @@ enum TradeType {
 ```
 
 The trade type is useful in determining how slippage is spread. `EXACT_INPUT` means no slippage tolerance is computed on the input amount while `EXACT_OUTPUT` means no slippage tolerance is applied on the output amount.
+
+
+The `TradeOptions` interface:
+
+
+```ts
+/**
+ * Trade options.
+ */
+export interface TradeOptions {
+  /**
+   * Price difference during latency in transaction submission and block confirmation
+   */
+  slippage: number;
+  /**
+   * How long the transaction should last before it becomes invalid
+   */
+  deadline: number;
+  /**
+   * The account that should receive the swap output
+   */
+  recipient: string;
+}
+```
