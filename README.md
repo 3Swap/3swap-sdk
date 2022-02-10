@@ -45,13 +45,13 @@ The `Fetcher.fetchTokenData` function returns a `Promise<Token>`.
 
 Fields in the token class include:
 
-| Name     | Type          |
-|----------|---------------|
-|_address  | string        |
-|_chainId  |ChainId|number |
-|_decimals |number|string  |
-|_name     |string         |
-|_symbol   |string         |
+| Name     | Type             |
+|----------|------------------|
+|_address  | string           |
+|_chainId  |ChainId or number |
+|_decimals |number or string  |
+|_name     |string            |
+|_symbol   |string            |
 
 
 
@@ -75,3 +75,11 @@ async function fetchTriad() {
 
 const triad = await Fetcher.fetchTriadData(tokenA, tokenB, tokenC, 'PROVIDER_URL');
 ```
+
+Fields in the triad class include:
+
+
+|Name          | Type        |
+|--------------|-------------|
+|liquidityToken|Token        |
+|tokenAmounts  |[TokenAmount]|
