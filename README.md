@@ -152,7 +152,7 @@ export interface TradeOptions {
 
 
 
-`Router.swapCallParameters` returns an `SwapParams` object.
+`Router.swapCallParameters` returns a `SwapParams` object.
 
 
 ```ts
