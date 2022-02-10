@@ -113,3 +113,15 @@ The `TokenAmount` constructor takes in a big number (the amount) and a token.
 ```js
 new TokenAmount(JSBI.BigInt(4000000000000000000), token);
 ```
+
+The `TradeType` enum:
+
+
+```ts
+enum TradeType {
+  EXACT_INPUT,
+  EXACT_OUTPUT
+}
+```
+
+The trade type is useful in determining how slippage is spread. `EXACT_INPUT` means no slippage tolerance is computed on the input amount while `EXACT_OUTPUT` means no slippage tolerance is applied on the output amount.
