@@ -33,7 +33,7 @@ You can also set a number as the chain id:
 
 ```js
 Fetcher.fetchTokenData(
-  97,'0x57c84e7bcbab211761a0cb91484ae896aa897ae9'
+  97,'0x57c84e7bcbab211761a0cb91484ae896aa897ae9' // '97' is the chain ID for Binance Testnet
 )
 .then(token => {
   console.log('Name: %s, Decimals: %d', token.name(), token.decimals()); // 3Swap 0x, SAPX
