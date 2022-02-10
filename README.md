@@ -140,12 +140,34 @@ export interface TradeOptions {
    */
   slippage: number;
   /**
-   * How long the transaction should last before it becomes invalid
+   * How long the transaction should last before it becomes invalid (in seconds)
    */
   deadline: number;
   /**
    * The account that should receive the swap output
    */
   recipient: string;
+}
+```
+
+
+
+`Router.swapCallParameters` returns an `SwapParams` object.
+
+
+```ts
+export interface SwapParams {
+  /**
+   * The method to send to the 3Swap router
+   */
+  methodName: string;
+  /**
+   * Arguments to pass to the method (all hex-encoded)
+   */
+  args: Array<string | string[]>;
+  /**
+   * Amount of wei to send in hex
+   */
+  value: string;
 }
 ```

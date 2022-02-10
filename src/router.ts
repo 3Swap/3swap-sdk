@@ -86,7 +86,7 @@ export interface TradeOptions {
    */
   slippage: number;
   /**
-   * How long the transaction should last before it becomes invalid
+   * How long the transaction should last before it becomes invalid (in seconds)
    */
   deadline: number;
   /**
