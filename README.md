@@ -45,10 +45,13 @@ The `Fetcher.fetchTokenData` function returns a `Promise<Token>`.
 
 Fields in the token class include:
 
-| Name     | Type  |
-|----------|-------|
-|_address  | string|
-
+| Name     | Type          |
+|----------|---------------|
+|_address  | string        |
+|_chainId  |ChainId|number |
+|_decimals |number|string  |
+|_name     |string         |
+|_symbol   |string         |
 
 
 
