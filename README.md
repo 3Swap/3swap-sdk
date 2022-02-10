@@ -39,3 +39,27 @@ Fetcher.fetchTokenData(
   console.log('Name: %s, Decimals: %d', token.name(), token.decimals()); // 3Swap 0x, SAPX
 });
 ```
+
+The `Fetcher.fetchTokenData` function returns a `Promise<Token>`.
+
+
+* Fetch triad data:
+
+Triad information can be fetched on-chain using a static helper method that returns a `Promise<Triad>`.
+
+```js
+import { Fetcher, ChainId } from '3swap-sdk';
+
+async function fetchTriad() {
+  const tokenA = await Fetcher.fetchTokenData(
+    ChainId.BINANCE_TESTNET, '0x57c84e7bcbab211761a0cb91484ae896aa897ae9'
+  );
+  
+  //...2 other tokens
+
+  const triad = await Fetcher.fetchTriadData(tokenA, tokenB, tokenC);
+}
+// or use custom provider url
+
+const triad = await Fetcher.fetchTriadData(tokenA, tokenB, tokenC, 'PROVIDER_URL');
+```
