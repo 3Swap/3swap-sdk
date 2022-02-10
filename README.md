@@ -43,6 +43,26 @@ Fetcher.fetchTokenData(
 The `Fetcher.fetchTokenData` function returns a `Promise<Token>`.
 
 
+Fields in the token class include:
+
+
+*`_address`*: The token address.
+
+
+*`_chainId`*: The token chain ID.
+
+
+*`_decimals`*: Token decimals.
+
+
+*`_name`*: The name of the token.
+
+
+*`_symbol`*: The token symbol.
+
+
+
+
 * Fetch triad data:
 
 Triad information can be fetched on-chain using a static helper method that returns a `Promise<Triad>`.
