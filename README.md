@@ -111,5 +111,5 @@ new Trade(input1amount, input2amount, outputamount, tradetype);
 The `TokenAmount` constructor takes in a big number (the amount) and a token.
 
 ```js
-new TokenAmount(JSBI.BigInt(4), token);
+new TokenAmount(JSBI.BigInt(4000000000000000000), token);
 ```
