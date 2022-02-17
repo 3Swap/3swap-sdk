@@ -45,9 +45,7 @@ export class TokenAmount {
   }
 
   divideByDecimal(): number {
-    return JSBI.toNumber(
-      JSBI.divide(this.raw, JSBI.BigInt(10 ** (this.token._decimals as number)))
-    );
+    return parseInt(this.raw.toString(16), 16) / 10 ** (this.token._decimals as number);
   }
 
   hexifyFromBigIntishThingy(): string {

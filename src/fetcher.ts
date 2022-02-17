@@ -5,7 +5,7 @@ import I3SwapTriad from '3swap-v1-core/build/contracts/I3SwapTriad.json';
 import invariant from 'tiny-invariant';
 import { ChainId, URLS } from './constants';
 import { Token } from './entities/Token';
-import { fetchRpc } from './utils';
+import { fetchRpc, hexToNumber } from './utils';
 import { Triad } from './entities/Triad';
 import { TokenAmount } from './entities/TokenAmount';
 
@@ -101,9 +101,9 @@ export class Fetcher {
         })
       );
 
-      reserve0 = JSBI.BigInt(reserve0);
-      reserve1 = JSBI.BigInt(reserve1);
-      reserve2 = JSBI.BigInt(reserve2);
+      reserve0 = JSBI.BigInt(hexToNumber(reserve0));
+      reserve1 = JSBI.BigInt(hexToNumber(reserve1));
+      reserve2 = JSBI.BigInt(hexToNumber(reserve2));
 
       let balances = tokenA.sortsBefore(tokenB)
         ? [reserve0, reserve1, reserve2]

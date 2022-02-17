@@ -1,13 +1,14 @@
 {
   "name": "3swap-sdk",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest --coverage --testTimeout=20000",
     "format": "prettier --write **/**/*.{ts,js,json}",
-    "build": "tsc"
+    "build": "tsc",
+    "prepublishOnly": "yarn build && yarn format"
   },
   "repository": {
     "type": "git",
