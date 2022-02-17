@@ -43,6 +43,9 @@ export const fetchRpc = (url: string, params: JsonRpcParams): Promise<any> => {
 };
 
 export const numberToHex = (num: number) => `0x${num.toString(16)}`;
+
+export const hexToNumber = (hex: string) => parseInt(hex, 16);
+
 export const validateAndParseAddress = (address: string) => {
   try {
     const checkSummed = getAddress(address);
