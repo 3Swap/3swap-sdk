@@ -71,35 +71,35 @@ export class Token {
  */
 export const WETH: { [key: number]: Token } = {
   [ChainId.BINANCE_TESTNET]: new Token(
-    '0xEB23ab7CFf701BB4180C519BCD5FB85d6C30cD94',
+    '0xfD350f2DE21a733ab1e924eF699e6664A7ffc203',
     ChainId.BINANCE_TESTNET,
     18,
     'Wrapped Binance Coin',
     'WBNB'
   ),
   [ChainId.ROPSTEN]: new Token(
-    '0xec5A20480c49B9286388F72f1AA95aF0D2525c94',
+    '0xF7415eBdF6E97Af8Be0E24b7A743A9D51627Bc34',
     ChainId.ROPSTEN,
     18,
     'Wrapped Ether',
     'WETH'
   ),
   [ChainId.FANTOM_TESTNET]: new Token(
-    '0xC481263897F96B4781219EDF5cfAa95ec49c200c',
+    '0xa83E55bd93C2Ca31290ac3dfC496040e1d064497',
     ChainId.FANTOM_TESTNET,
     18,
     'Wrapped Fantom',
     'WFTM'
   ),
   [ChainId.AVALANCHE_TESTNET]: new Token(
-    '0xC481263897F96B4781219EDF5cfAa95ec49c200c',
+    '0x85A2f5De3D161Ad23A00098298afD4d54449cec9',
     ChainId.AVALANCHE_TESTNET,
     18,
     'Wrapped Avalanche Coin',
     'WAVAX'
   ),
   [ChainId.MATIC_TESTNET]: new Token(
-    '0xC481263897F96B4781219EDF5cfAa95ec49c200c',
+    '0x54e07e58bB2d7eECAB1EEd44809fEB63ab2C991c',
     ChainId.MATIC_TESTNET,
     18,
     'Wrapped Matic',
