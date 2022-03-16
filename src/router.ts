@@ -3,7 +3,7 @@ import { numberToHex, validateAndParseAddress } from './utils';
 import { Token, WETH } from './entities/Token';
 import { TokenAmount } from './entities/TokenAmount';
 import { ChainId, TWO, _100 } from './constants';
-import JSBI from 'jsbi';
+import BigNumber from 'bignumber.js';
 
 export enum TradeType {
   EXACT_INPUT,
@@ -39,11 +39,10 @@ export class Trade {
     invariant(slippage >= 0, 'slippage_less_than_0');
     if (this.tradeType === TradeType.EXACT_OUTPUT) return this.outputAmount;
     else {
-      const slippageAsPercentage = (slippage / 100).toString(16);
-      const slippageAdjustedAmountOut = JSBI.divide(
-        JSBI.multiply(this.outputAmount.raw, _100),
-        JSBI.BigInt(slippageAsPercentage)
-      );
+      const slippageAsPercentage = new BigNumber(slippage).dividedBy(100);
+      const slippageAdjustedAmountOut = new BigNumber(
+        new BigNumber(this.outputAmount.raw).multipliedBy(_100)
+      ).dividedBy(slippageAsPercentage);
       return new TokenAmount(slippageAdjustedAmountOut, this.outputAmount.token);
     }
   }
@@ -53,24 +52,25 @@ export class Trade {
     if (this.tradeType === TradeType.EXACT_INPUT)
       return [this.inputAmount1, this.inputAmount2];
     else {
-      const slippageAdjustedAmountIn = JSBI.divide(
-        JSBI.add(
-          JSBI.multiply(
-            JSBI.BigInt(slippage),
-            JSBI.add(this.inputAmount1.raw, this.inputAmount2.raw)
-          ),
-          JSBI.multiply(_100, JSBI.add(this.inputAmount1.raw, this.inputAmount2.raw))
-        ),
-        _100
-      );
-      const slippageDivided = JSBI.divide(slippageAdjustedAmountIn, TWO);
+      const slippageAdjustedAmountIn = new BigNumber(
+        new BigNumber(
+          new BigNumber(this.inputAmount1.raw)
+            .plus(this.inputAmount2.raw)
+            .multipliedBy(slippage)
+        ).plus(
+          new BigNumber(this.inputAmount1.raw)
+            .plus(this.inputAmount2.raw)
+            .multipliedBy(_100)
+        )
+      ).dividedBy(_100);
+      const slippageDivided = new BigNumber(slippageAdjustedAmountIn).dividedBy(TWO);
       return [
         new TokenAmount(
-          JSBI.add(this.inputAmount1.raw, slippageDivided),
+          new BigNumber(this.inputAmount1.raw).plus(slippageDivided),
           this.inputAmount1.token
         ),
         new TokenAmount(
-          JSBI.add(this.inputAmount2.raw, slippageDivided),
+          new BigNumber(this.inputAmount2.raw).plus(slippageDivided),
           this.inputAmount2.token
         )
       ];

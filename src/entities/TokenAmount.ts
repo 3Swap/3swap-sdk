@@ -1,4 +1,4 @@
-import JSBI from 'jsbi';
+import BigNumber from 'bignumber.js';
 import invariant from 'tiny-invariant';
 import { BigIntishThingy } from '../constants';
 import { numberToHex } from '../utils';
@@ -10,8 +10,8 @@ import { Token } from './Token';
 export class TokenAmount {
   public numerator: BigIntishThingy;
   public token: Token;
-  public get raw(): JSBI {
-    return this.numerator as JSBI;
+  public get raw(): BigNumber {
+    return this.numerator as BigNumber;
   }
 
   /**
@@ -30,7 +30,7 @@ export class TokenAmount {
       'operation_on_different_chains'
     );
     invariant(this.token._address === other.token._address, 'must_be_same_token');
-    const sum = JSBI.add(this.raw, other.raw);
+    const sum = new BigNumber(this.raw).plus(other.raw);
     return new TokenAmount(sum, this.token);
   }
 
@@ -40,7 +40,7 @@ export class TokenAmount {
       'operation_on_different_chains'
     );
     invariant(this.token._address === other.token._address, 'must_be_same_token');
-    const diff = JSBI.subtract(this.raw, other.raw);
+    const diff = new BigNumber(this.raw).minus(other.raw);
     return new TokenAmount(diff, this.token);
   }
 
@@ -49,7 +49,7 @@ export class TokenAmount {
   }
 
   hexifyFromBigIntishThingy(): string {
-    const asString = (this.numerator as JSBI).toString(16);
+    const asString = (this.numerator as BigNumber).toString(16);
     return !asString.startsWith('0x') ? `0x${asString}` : asString;
   }
 

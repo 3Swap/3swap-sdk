@@ -29,6 +29,7 @@
     "@ethersproject/address": "^5.5.0",
     "@ethersproject/solidity": "^5.5.0",
     "axios": "^0.25.0",
+    "bignumber.js": "^9.0.2",
     "jsbi": "^4.1.0",
     "tiny-invariant": "^1.2.0",
     "tiny-warning": "^1.0.3"
