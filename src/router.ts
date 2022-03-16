@@ -47,7 +47,7 @@ export class Trade {
         .dividedBy(_100);
       const slippageAdjustedAmountOut = new BigNumber(
         this.outputAmount.raw.dividedBy(10 ** this.outputAmount.token.decimals())
-      ).plus(slippageCalc);
+      ).minus(slippageCalc);
       return new TokenAmount(
         slippageAdjustedAmountOut.multipliedBy(10 ** this.outputAmount.token.decimals()),
         this.outputAmount.token
