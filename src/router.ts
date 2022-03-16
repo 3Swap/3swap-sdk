@@ -2,7 +2,7 @@ import invariant from 'tiny-invariant';
 import { numberToHex, validateAndParseAddress } from './utils';
 import { Token, WETH } from './entities/Token';
 import { TokenAmount } from './entities/TokenAmount';
-import { ChainId, TWO, _100 } from './constants';
+import { ChainId, ONE, TWO, _100 } from './constants';
 import BigNumber from 'bignumber.js';
 
 export enum TradeType {
@@ -39,11 +39,19 @@ export class Trade {
     invariant(slippage >= 0, 'slippage_less_than_0');
     if (this.tradeType === TradeType.EXACT_OUTPUT) return this.outputAmount;
     else {
-      const slippageAsPercentage = new BigNumber(slippage).dividedBy(100);
+      const slippageCalc = new BigNumber(
+        this.outputAmount.raw.dividedBy(10 ** this.outputAmount.token.decimals())
+      )
+        .plus(ONE)
+        .multipliedBy(new BigNumber(slippage).dividedBy(_100))
+        .dividedBy(_100);
       const slippageAdjustedAmountOut = new BigNumber(
-        new BigNumber(this.outputAmount.raw).multipliedBy(_100)
-      ).dividedBy(slippageAsPercentage);
-      return new TokenAmount(slippageAdjustedAmountOut, this.outputAmount.token);
+        this.outputAmount.raw.dividedBy(10 ** this.outputAmount.token.decimals())
+      ).plus(slippageCalc);
+      return new TokenAmount(
+        slippageAdjustedAmountOut.multipliedBy(10 ** this.outputAmount.token.decimals()),
+        this.outputAmount.token
+      );
     }
   }
 
