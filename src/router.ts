@@ -39,9 +39,10 @@ export class Trade {
     invariant(slippage >= 0, 'slippage_less_than_0');
     if (this.tradeType === TradeType.EXACT_OUTPUT) return this.outputAmount;
     else {
+      const slippageAsPercentage = JSBI.divide(JSBI.BigInt(slippage), _100);
       const slippageAdjustedAmountOut = JSBI.divide(
         JSBI.multiply(this.outputAmount.raw, JSBI.BigInt(101)),
-        _100
+        slippageAsPercentage
       );
       return new TokenAmount(slippageAdjustedAmountOut, this.outputAmount.token);
     }
