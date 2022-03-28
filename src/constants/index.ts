@@ -5,7 +5,8 @@ export enum ChainId {
   ROPSTEN = 3,
   MATIC_TESTNET = 80001,
   FANTOM_TESTNET = 4002,
-  AVALANCHE_TESTNET = 43113
+  AVALANCHE_TESTNET = 43113,
+  TELOS_TESTNET = 41
 }
 
 export type BigIntishThingy = BigNumber | bigint | string;
@@ -15,7 +16,8 @@ export const Factories: { [key: number]: string } = {
   [ChainId.ROPSTEN]: '0xF6a7F229447FB986195c4dC8305553C8A8518d06',
   [ChainId.AVALANCHE_TESTNET]: '0x842CDC95B8BC3A19a8fFc91f200e51c8aF6faFC6',
   [ChainId.MATIC_TESTNET]: '0x842CDC95B8BC3A19a8fFc91f200e51c8aF6faFC6',
-  [ChainId.FANTOM_TESTNET]: '0x842CDC95B8BC3A19a8fFc91f200e51c8aF6faFC6'
+  [ChainId.FANTOM_TESTNET]: '0x842CDC95B8BC3A19a8fFc91f200e51c8aF6faFC6',
+  [ChainId.TELOS_TESTNET]: '0xE41d241720FEE7cD6BDfA9aB3204d23687703CD5'
 };
 
 export const BYTECODE_HASH =
@@ -45,5 +47,6 @@ export const URLS: { [key: number]: string } = {
     'https://speedy-nodes-nyc.moralis.io/558120230227a848a2bb7043/polygon/mumbai',
   [ChainId.AVALANCHE_TESTNET]:
     'https://speedy-nodes-nyc.moralis.io/558120230227a848a2bb7043/avalanche/testnet',
-  [ChainId.FANTOM_TESTNET]: 'https://rpc.testnet.fantom.network'
+  [ChainId.FANTOM_TESTNET]: 'https://rpc.testnet.fantom.network',
+  [ChainId.TELOS_TESTNET]: 'https://testnet.telos.net/evm'
 };
