@@ -104,5 +104,12 @@ export const WETH: { [key: number]: Token } = {
     18,
     'Wrapped Matic',
     'WMATIC'
+  ),
+  [ChainId.TELOS_TESTNET]: new Token(
+    '0xD6447d2fA919811c41a064bDbdaB1E281F8de9B2',
+    ChainId.TELOS_TESTNET,
+    18,
+    'Wrapped Telos',
+    'WTLOS'
   )
 };

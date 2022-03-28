@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"3swap-v1-core@^1.0.13":
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/3swap-v1-core/-/3swap-v1-core-1.0.13.tgz#db5328a214fdcd2b4cb1bd8118b82fb2b55bd883"
-  integrity sha512-Id5p9tHTuG4p/8CwCU/0S6XIEwlOuulfIHNtOjypTZQt3UvR5aPtghHCq2S3ah5CNldEuXY49p6Ry+gYOhKP0g==
+"3swap-v1-core@^1.0.14":
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/3swap-v1-core/-/3swap-v1-core-1.0.14.tgz#0c5e130d90777963fc77c0f78c25ace883bb9ff1"
+  integrity sha512-WPi6ERqV0XpDI1nqsBRt61BRGCafrX32DGKqqOf0jrnVAYjRFrdNULe2sTEo+tp/2KvbV9BumxCWG4ymF0UBlA==
 
 "@ampproject/remapping@^2.0.0":
   version "2.1.0"
